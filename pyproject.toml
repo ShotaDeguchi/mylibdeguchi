@@ -6,6 +6,14 @@ build-backend = "setuptools.build_meta"
 name = "mylibdeguchi"
 version = "0.1.0"
 description = "My first Python library"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Shota Deguchi", email = "shotadeguchio2o5@gmail.com" },
+]
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0.0",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
