@@ -1,0 +1,11 @@
+# venv
+.venv_mylib/
+
+# test / cache
+.pytest_cache/
+__pycache__/
+
+# build artifacts
+build/
+dist/
+*.egg-info/
