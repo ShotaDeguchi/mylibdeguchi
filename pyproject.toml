@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mylib"
+name = "mylibdeguchi"
 version = "0.1.0"
 description = "My first Python library"
 
