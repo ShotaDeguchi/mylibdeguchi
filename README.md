@@ -17,7 +17,7 @@ You can create a multi-layer perceptron (MLP) using the `MLP` class.
 import torch
 import mylib
 
-BATCH_SIZE = 32
+BATCH_SIZE = 4
 IN_DIM = 2
 OUT_DIM = 1
 model = mylib.MLP(
@@ -40,7 +40,7 @@ import mylib
 def func(x):
     return torch.stack([x[0]**2, x[1]**3], dim=0)
 
-x = torch.randn(32, 2)
+x = torch.ones(4, 2)
 jacobian_matrix = mylib.jacobian(func, x)
 ```
 
@@ -49,7 +49,7 @@ You can also compute the Jacobian of an MLP model:
 import torch
 import mylib
 
-BATCH_SIZE = 32
+BATCH_SIZE = 4
 IN_DIM = 2
 model = mylib.MLP(
     in_dim=IN_DIM,
