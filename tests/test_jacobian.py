@@ -15,7 +15,7 @@ def test_jacobian():
         [3.0, 4.0],
     ])
 
-    J = jacobian(model, x)
+    jac = jacobian(model, x)
 
     expected = torch.tensor([
         [
@@ -28,8 +28,8 @@ def test_jacobian():
         ],
     ])
 
-    assert J.shape == (2, 2, 2)
-    assert torch.allclose(J, expected)
+    assert jac.shape == (2, 2, 2)
+    assert torch.allclose(jac, expected)
 
 
 def test_jacobian_second_derivative():
@@ -44,27 +44,27 @@ def test_jacobian_second_derivative():
         requires_grad=True,
     )
 
-    J = jacobian(model, x)
+    jac = jacobian(model, x)
 
-    # J: (N, 1, 2)
+    # jac: (N, 1, 2)
     # d/dx1 (x1^3 + x2) = 3 x1^2
     expected = torch.tensor([
         [[3.0, 1.0]],
         [[12.0, 1.0]],
     ])
 
-    assert torch.allclose(J, expected)
+    assert torch.allclose(jac, expected)
 
     # Second derivative with respect to x1
-    d2 = torch.autograd.grad(
-        J[:, 0, 0].sum(),
+    j2 = torch.autograd.grad(
+        jac[:, 0, 0].sum(),
         x,
         create_graph=True,
     )[0]
 
-    expected_d2 = torch.tensor([
+    expected_j2 = torch.tensor([
         [6.0, 0.0],
         [12.0, 0.0],
     ])
 
-    assert torch.allclose(d2, expected_d2)
+    assert torch.allclose(j2, expected_j2)
